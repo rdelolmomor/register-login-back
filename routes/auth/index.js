@@ -6,10 +6,10 @@ const { loginData } = require('../../db/auth/index');
 
 authRouter.post('/login', async (req,res)=>{
     try{
-        const {userName, password} = req.body;
-        console.log(userName);
-        console.log(password);
-        let result = await loginData(userName,password);
+        const {userName, hashPwd} = req.body;
+        console.log('username: ',userName);
+        console.log('password: ', hashPwd);
+        let result = await loginData(userName,hashPwd);
         console.log('result: ',result);
         res.status(201).send(result);
     }catch(err){
